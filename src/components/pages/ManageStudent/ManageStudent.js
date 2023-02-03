@@ -8,7 +8,7 @@ import Loader from "../../Spinner/Loader";
 
 const ManageStudent = () => {
 	const [studentForm, setStudentForm] = useState(null);
-	
+
 	const {
 		data: addstudent,
 		isLoading,
@@ -17,11 +17,14 @@ const ManageStudent = () => {
 		queryKey: ["addstudent"],
 		queryFn: async () => {
 			try {
-				const res = await fetch("http://localhost:5000/information", {
-					headers: {
-						"content-type": "application/json",
-					},
-				});
+				const res = await fetch(
+					"https://student-form-server-shamimayesmin.vercel.app/information",
+					{
+						headers: {
+							"content-type": "application/json",
+						},
+					}
+				);
 
 				const data = await res.json();
 				return data;
@@ -29,85 +32,78 @@ const ManageStudent = () => {
 		},
 	});
 
-
-    if (isLoading) {
+	if (isLoading) {
 		return <Loader></Loader>;
 	}
 	const handleDeleteStudent = (id) => {
-        const procced = window.confirm("Do you want to delete this item");
-        if(procced){
-            fetch(`http://localhost:5000/information/${id}`, {
-			method: "DELETE",
-			headers: {
-				"content-type": "application/json",
-			},
-		})
-			.then((res) => res.json())
-			.then((data) => {
-                console.log(data);
-				if (data.deletedCount > 0) {
-					refetch();
-					toast.success(`Student deleted successfully`);
-                    
+		const procced = window.confirm("Do you want to delete this item");
+		if (procced) {
+			fetch(
+				`https://student-form-server-shamimayesmin.vercel.app/information/${id}`,
+				{
+					method: "DELETE",
+					headers: {
+						"content-type": "application/json",
+					},
 				}
-				console.log(data);
-			});
-        }
-        
+			)
+				.then((res) => res.json())
+				.then((data) => {
+					console.log(data);
+					if (data.deletedCount > 0) {
+						refetch();
+						toast.success(`Student deleted successfully`);
+					}
+					console.log(data);
+				});
+		}
 	};
-
 
 	return (
 		<section>
-            <div>
-			<h2 className="text-2xl ml-14 mb-3">Manage Students</h2>
-			<div className="overflow-x-auto bg-red-50">
-				<table className="table w-full">
-					<thead>
-						<tr className="bg-red-600">
-							<th></th>
+			<div>
+				<h2 className="text-2xl ml-14 mb-3">Manage Students</h2>
+				<div className="overflow-x-auto bg-red-50">
+					<table className="table w-full">
+						<thead>
+							<tr className="bg-red-600">
+								<th></th>
 
-							<th>Name</th>
-							<th>Class</th>
-							<th>Roll No.</th>
-							<th>View  /  Edit  /  Delete </th>
-						</tr>
-					</thead>
-					<tbody className="bg-re-50">
-
-						{addstudent?.map((students, i) => (
-                            <Student
-                                i={i}
-								key={students._id}
-								students={students}
-								handleDeleteStudent={handleDeleteStudent}
-                                setStudentForm={setStudentForm}
-                            ></Student>
-							
-						))}
-					</tbody>
-				</table>
-			</div> 
-            {studentForm && (
-				<StudentModal
-                studentForm={studentForm}
-                setStudentForm={setStudentForm}
-                refetch={refetch}
-				></StudentModal>
-			)}  
-            {studentForm && (
-				<EditModal
-                studentForm={studentForm}
-                setStudentForm={setStudentForm}
-                refetch={refetch}
-                
-				></EditModal>
-			)}  
-
-
-		</div>
-        
-        </section>
+								<th>Name</th>
+								<th>Class</th>
+								<th>Roll No.</th>
+								<th>View / Edit / Delete </th>
+							</tr>
+						</thead>
+						<tbody className="bg-re-50">
+							{addstudent?.map((students, i) => (
+								<Student
+									i={i}
+									key={students._id}
+									students={students}
+									handleDeleteStudent={handleDeleteStudent}
+									setStudentForm={setStudentForm}
+								></Student>
+							))}
+						</tbody>
+					</table>
+				</div>
+				{studentForm && (
+					<StudentModal
+						studentForm={studentForm}
+						setStudentForm={setStudentForm}
+						refetch={refetch}
+					></StudentModal>
+				)}
+				{studentForm && (
+					<EditModal
+						studentForm={studentForm}
+						setStudentForm={setStudentForm}
+						refetch={refetch}
+					></EditModal>
+				)}
+			</div>
+		</section>
 	);
 };
 

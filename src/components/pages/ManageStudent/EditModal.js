@@ -1,40 +1,47 @@
-import React from 'react';
-import { toast } from 'react-hot-toast';
+import React from "react";
+import { toast } from "react-hot-toast";
 
-const EditModal = ({ studentForm,setStudentForm, setEditForm, refetch }) => {
-    console.log(studentForm);
-    const {_id,} = studentForm
+const EditModal = ({ studentForm, setStudentForm, setEditForm, refetch }) => {
+	console.log(studentForm);
+	const { _id } = studentForm;
 
-    const handleUpdateForm = (event) => {
+	const handleUpdateForm = (event) => {
 		event.preventDefault();
-		const updatedName = event.target.firstName.value; 
-        const updatedClass = event.target.class.value;
-        const updatedDivision = event.target.division.value;
-        const updatedRoll = event.target.roll.value;
-        const updatedAddress = event.target.addressone.value;
-        const updatedLand = event.target.landmark.value;
-        const updatedCity = event.target.city.value;
-        const updatedPin = event.target.pincode.value;
-        
+		const updatedName = event.target.firstName.value;
+		const updatedClass = event.target.class.value;
+		const updatedDivision = event.target.division.value;
+		const updatedRoll = event.target.roll.value;
+		const updatedAddress = event.target.addressone.value;
+		const updatedLand = event.target.landmark.value;
+		const updatedCity = event.target.city.value;
+		const updatedPin = event.target.pincode.value;
 
-		fetch(` http://localhost:5000/edit/${_id}`, {
+		fetch(` https://student-form-server-shamimayesmin.vercel.app/edit/${_id}`, {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({updatedName, updatedClass,updatedDivision,updatedRoll,updatedAddress,updatedLand,updatedCity,updatedPin }),
+			body: JSON.stringify({
+				updatedName,
+				updatedClass,
+				updatedDivision,
+				updatedRoll,
+				updatedAddress,
+				updatedLand,
+				updatedCity,
+				updatedPin,
+			}),
 		})
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.matchedCount > 0) {
 					toast.success("Form updated");
 					event.target.reset();
-					
 				}
 			});
 	};
-    return (
-        <>
+	return (
+		<>
 			<input type="checkbox" id="book-modal" className="modal-toggle" />
 			<div className="modal">
 				<div className="modal-box relative w-96">
@@ -44,7 +51,6 @@ const EditModal = ({ studentForm,setStudentForm, setEditForm, refetch }) => {
 					>
 						✕
 					</label>
-					
 
 					<form
 						onSubmit={handleUpdateForm}
@@ -57,10 +63,9 @@ const EditModal = ({ studentForm,setStudentForm, setEditForm, refetch }) => {
 							<input
 								type="text"
 								placeholder="Name"
-                                name='firstName'
-                                id='firstName'
+								name="firstName"
+								id="firstName"
 								className="input input-bordered w-full"
-								
 							/>
 						</div>
 
@@ -71,10 +76,9 @@ const EditModal = ({ studentForm,setStudentForm, setEditForm, refetch }) => {
 							<input
 								type="number"
 								placeholder="class"
-								name='class'
-                                id='class'
+								name="class"
+								id="class"
 								className="input input-bordered w-full"
-								
 							/>
 						</div>
 
@@ -84,7 +88,7 @@ const EditModal = ({ studentForm,setStudentForm, setEditForm, refetch }) => {
 							</label>
 							<input
 								name="roll"
-                                id='roll'
+								id="roll"
 								type="number"
 								placeholder="Roll"
 								className="input input-bordered w-full"
@@ -97,9 +101,9 @@ const EditModal = ({ studentForm,setStudentForm, setEditForm, refetch }) => {
 							</label>
 							<input
 								type="text"
-                                name='division'
-                                id='division'
-								placeholder="Division"	
+								name="division"
+								id="division"
+								placeholder="Division"
 								className="input input-bordered w-full"
 							/>
 						</div>
@@ -110,7 +114,7 @@ const EditModal = ({ studentForm,setStudentForm, setEditForm, refetch }) => {
 							</label>
 							<input
 								name="addressone"
-                                id='addressone'
+								id="addressone"
 								type="text"
 								placeholder="Address"
 								className="input input-bordered w-full"
@@ -123,11 +127,10 @@ const EditModal = ({ studentForm,setStudentForm, setEditForm, refetch }) => {
 							</label>
 							<input
 								name="landmark"
-                                id='landmark'
+								id="landmark"
 								type="text"
-								placeholder="Lankmark"						
+								placeholder="Lankmark"
 								className="input input-bordered w-full"
-								
 							/>
 						</div>
 
@@ -137,12 +140,10 @@ const EditModal = ({ studentForm,setStudentForm, setEditForm, refetch }) => {
 							</label>
 							<input
 								name="city"
-                                id='city'
+								id="city"
 								type="text"
 								placeholder="City"
-								
 								className="input input-bordered w-full"
-								
 							/>
 						</div>
 						<div>
@@ -152,12 +153,10 @@ const EditModal = ({ studentForm,setStudentForm, setEditForm, refetch }) => {
 
 							<input
 								name="pincode"
-                                id='pincode'
+								id="pincode"
 								type="number"
 								placeholder="Pincode"
-								
 								className="input input-bordered w-full"
-								
 							/>
 						</div>
 
@@ -171,7 +170,7 @@ const EditModal = ({ studentForm,setStudentForm, setEditForm, refetch }) => {
 				</div>
 			</div>
 		</>
-    );
+	);
 };
 
 export default EditModal;

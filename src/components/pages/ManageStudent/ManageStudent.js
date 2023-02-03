@@ -18,7 +18,7 @@ const ManageStudent = () => {
 		queryFn: async () => {
 			try {
 				const res = await fetch(
-					"https://student-form-server-shamimayesmin.vercel.app/information",
+					"https://student-form-server.vercel.app/information",
 					{
 						headers: {
 							"content-type": "application/json",
@@ -38,15 +38,12 @@ const ManageStudent = () => {
 	const handleDeleteStudent = (id) => {
 		const procced = window.confirm("Do you want to delete this item");
 		if (procced) {
-			fetch(
-				`https://student-form-server-shamimayesmin.vercel.app/information/${id}`,
-				{
-					method: "DELETE",
-					headers: {
-						"content-type": "application/json",
-					},
-				}
-			)
+			fetch(`https://student-form-server.vercel.app/information/${id}`, {
+				method: "DELETE",
+				headers: {
+					"content-type": "application/json",
+				},
+			})
 				.then((res) => res.json())
 				.then((data) => {
 					console.log(data);

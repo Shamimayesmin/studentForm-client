@@ -16,7 +16,7 @@ const EditModal = ({ studentForm, setStudentForm, setEditForm, refetch }) => {
 		const updatedCity = event.target.city.value;
 		const updatedPin = event.target.pincode.value;
 
-		fetch(` https://student-form-server-shamimayesmin.vercel.app/edit/${_id}`, {
+		fetch(` https://student-form-server.vercel.app/edit/${_id}`, {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json",

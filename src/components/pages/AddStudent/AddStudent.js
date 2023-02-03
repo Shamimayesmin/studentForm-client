@@ -28,7 +28,7 @@ const AddStudent = () => {
 			pincode: data.pincode,
 		};
 		console.log(studentInfo);
-		fetch("https://student-form-server-shamimayesmin.vercel.app/information", {
+		fetch("https://student-form-server.vercel.app/information", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",

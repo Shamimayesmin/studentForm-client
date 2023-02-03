@@ -6,16 +6,18 @@ import { MdManageSearch } from "react-icons/md";
 import { AuthContext } from "../../../context/AuthProvider.";
 
 const DashboardLayout = () => {
-    const { user, logOut } = useContext(AuthContext);
-    const navegate = useNavigate();
-	
+	const { user, logOut } = useContext(AuthContext);
+	const navegate = useNavigate();
 
 	const handleLogOut = () => {
 		logOut()
 			.then(() => {})
 			.catch((err) => console.error(err));
-			navegate('/login')
+		navegate("/");
 	};
+
+	
+
 	return (
 		<div className="mt-7">
 			{/* <Navbar></Navbar> */}

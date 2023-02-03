@@ -7,6 +7,7 @@ import Login from "../pages/Login/Login";
 import ManageStudent from "../pages/ManageStudent/ManageStudent";
 import SignUp from "../pages/SignUp/SignUp";
 
+
 export const router = createBrowserRouter([
     {
         path : "/",
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
             {
                 path : '/dashboard',
                 element: <DashboardLayout></DashboardLayout>,
+                
                 children : [
                     {
                         path : "/dashboard/addstudent",

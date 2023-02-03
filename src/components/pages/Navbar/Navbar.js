@@ -5,13 +5,8 @@ import { AuthContext } from "../../../context/AuthProvider.";
 
 const Navbar = () => {
     
-	const { user, logOut } = useContext(AuthContext);
-
-	const handleLogOut = () => {
-		logOut()
-			.then(() => {})
-			.catch((err) => console.error(err));
-	};
+	const { user} = useContext(AuthContext);
+	
 
 	return (
 		<div className="navbar flex justify-between w-full shadow-lg">
@@ -37,22 +32,10 @@ const Navbar = () => {
 						tabIndex={0}
 						className="menu menu-compact justify-end dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
 					>
-						<Link to='/dashboard' className="btn btn-square btn-ghost">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								className="inline-block w-5 h-5 stroke-current"
-							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth="2"
-									d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-								></path>
-							</svg>
-						</Link>
-
+						
+						
+					
+						<li><Link to="/dashboard">Dashboard</Link></li>
 						<li>
 							<Link to="/">Log In</Link>
 						</li>
@@ -67,25 +50,19 @@ const Navbar = () => {
 			<div className="navbar-end mr-8 hidden lg:flex">
 				<ul className="menu menu-horizontal px-1">
 					
-                    <Link to='/dashboard' className="btn btn-square btn-ghost">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							className="inline-block w-5 h-5 stroke-current"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-							></path>
-						</svg>
-					
-                    </Link>
-					<li>
+                    
+					{user?.uid?
+						<>
+						<li><Link to="/dashboard/addstudent">Dashboard</Link></li>
+						
+						</>
+						:
+						<li>
 						<Link to="/">Log In</Link>
-					</li>
+						</li>
+					}
+					
+					
 				</ul>
 			</div>
 

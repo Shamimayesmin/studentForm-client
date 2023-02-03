@@ -8,7 +8,7 @@ import Loader from "../../Spinner/Loader";
 
 const ManageStudent = () => {
 	const [studentForm, setStudentForm] = useState(null);
-	// const [loading, setLoading] = useState(true);
+	
 	const {
 		data: addstudent,
 		isLoading,

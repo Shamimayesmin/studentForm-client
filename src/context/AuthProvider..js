@@ -9,8 +9,7 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const [loading,setLoading] = useState(true);
 
-    // const user = {displayName : 'shamima'}
-
+    
     const loginWithGoogle = (provider) =>{
         setLoading(true)
         return signInWithPopup(auth,provider)

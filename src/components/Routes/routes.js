@@ -33,23 +33,11 @@ export const router = createBrowserRouter([
                         path : "/dashboard/manage",
                         element :  <ManageStudent></ManageStudent>
                     },
-                    // {
-                    //     path : "/dashboard/logout",
-                    //     element :  
-                    // },
+                   
                 ]
             },
         ]
     },
 
-    // {
-    //     path : '/dashboard',
-    //     element: <DashboardLayout></DashboardLayout>,
-    //     children: [
-    //         {
-	// 			path: "/dashboard/addstudent",
-	// 			element: <AddStudent></AddStudent>
-	// 		},
-    //     ]
-    // },
+    
 ])

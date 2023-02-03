@@ -1,9 +1,7 @@
 import React from "react";
 import { AiOutlineEye, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 const Student = ({students, handleDeleteStudent, i,setStudentForm,studentForm}) => {
-	// console.log(students);
-    // const {_id,firstName,roll,noClass} = students
-
+	
 
 	return (
 		<>
@@ -18,7 +16,7 @@ const Student = ({students, handleDeleteStudent, i,setStudentForm,studentForm}) 
 
 				<td className="flex text-2xl gap-3">
 				
-                    {/* <button className='btn ml-2 whitespace-nowrap bg-white rounded-full text-red-500 px-3 py-2 '><AiOutlineEye className="text-2xl"/></button> */}
+                    
 
                     <label  onClick={()=> setStudentForm(students)} htmlFor="booking-modal" className='btn ml-2 whitespace-nowrap bg-white rounded-full text-red-500 px-3 py-2 text-xs'><AiOutlineEye className="text-2xl"/></label>
                     
@@ -30,15 +28,7 @@ const Student = ({students, handleDeleteStudent, i,setStudentForm,studentForm}) 
 					/></button>
 					
 				</td>
-				{/* <td>
-					<label
-						onClick={() => handleDeleteStudent()}
-						htmlFor="confirm-modal"
-						className="btn btn-sm btn-error"
-					>
-						<AiOutlineEdit className="text-2xl"/>
-					</label>
-				</td> */}
+				
 			</tr>
 		</>
 	);
